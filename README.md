@@ -51,9 +51,8 @@ docker compose up
 # Fastapi 엔드포인트에 테스트용 json 전송
 curl -X POST http://localhost:8000/send_message -H "Content-Type: application/json" -d '{"purpose": "initialpose", "payload": {"x": 1.23, "y": 4.56, "yaw": 1.57}}'
 
-#호스트에서 fastapi에 요청 들어올땜다ㅏ 실시간으로 발사되는 토픽 확인
+#호스트에서 fastapi에 요청 들어올때 마다 실시간으로 발사되는 토픽 확인
 ros2 topic echo /bridge_topic
----
 ```
 
 ## 👥 3️⃣ Contributors
