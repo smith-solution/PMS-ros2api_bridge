@@ -64,7 +64,7 @@ curl -X POST "http://localhost:8001/operation_mode" \
   -d '{"mode": 2}'
 
 # 서비스 상태 확인
-curl "http://localhost:8000/health"
+curl "http://localhost:8001/health"
 ```
 
 ```bash
