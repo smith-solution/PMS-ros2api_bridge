@@ -9,7 +9,6 @@
 
 - 📬 **Node.js**는 FastAPI의 엔드포인트에 `JSON` 형식의 **추상화된 Autoware 메시지**를 전송  
 
-<img width="1342" height="952" alt="Screenshot from 2025-07-22 20-43-14" src="https://github.com/user-attachments/assets/455b0a9c-c580-4d4c-b71c-9f1867a8f9ae" />
 <img width="695" height="405" alt="Screenshot from 2025-07-22 21-02-10" src="https://github.com/user-attachments/assets/4a7d0bb2-3135-4696-a760-d981d921c551" />
 
 
@@ -94,14 +93,14 @@ FastAPI 서버는 다음과 같은 JSON 형식의 요청을 받습니다.
 }
 ```
 
-```
+
 | 필드명     | 타입   | 설명                       |
 |------------|--------|----------------------------|
 | x          | float  | 초기 위치의 X 좌표         |
 | y          | float  | 초기 위치의 Y 좌표         |
 | yaw        | float  | 회전각 (라디안 단위)       |
 | frame_id   | string | 기준 좌표계 (기본값: map)  |
-```
+
 
 ---
 
@@ -128,14 +127,14 @@ FastAPI 서버는 다음과 같은 JSON 형식의 요청을 받습니다.
 }
 ```
 
-```
+
 | 모드 번호 | 설명                    |
 |-----------|-------------------------|
 | 1         | STOP (정지)             |
 | 2         | AUTONOMOUS (자율주행)   |
 | 3         | LOCAL (로컬 제어)       |
 | 4         | REMOTE (원격 제어)      |
-```
+
 
 > 유효하지 않은 모드를 전송하면 400 에러가 반환됩니다.
 
@@ -170,4 +169,4 @@ FastAPI 서버는 다음과 같은 JSON 형식의 요청을 받습니다.
 
 
 
-<img width="1291" height="952" alt="Screenshot from 2025-07-22 16-42-52" src="https://github.com/user-attachments/assets/1b587297-64a5-4da3-b925-ee368fb72194" />
+<img width="1342" height="952" alt="Screenshot from 2025-07-22 20-43-14" src="https://github.com/user-attachments/assets/455b0a9c-c580-4d4c-b71c-9f1867a8f9ae" />
