@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  ros2api_bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ros2api_bridge
+    runtime: nvidia  # ✅ 'gpu: all' → deprecated. use 'runtime: nvidia'
+    network_mode: host
+    ipc: host
+    privileged: true
+
+    environment:
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - ROS_DOMAIN_ID=30
+      - ROS_LOCALHOST_ONLY=0
+      - ROS_SUPER_CLIENT=true
+      - DISPLAY=${DISPLAY}  # ❌ 공백 제거
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+
+    volumes:  # ❌ voloume → ✅ volumes
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+
+    command: >
+      bash -c "
+               source /opt/ros/humble/setup.bash &&
+               source /PMS_server/install/setup.bash &&
+               apt update && apt install -y iproute2 &&
+               apt install -y ros-humble-rmw-cyclonedds-cpp &&
+               ros2 launch ros2api_bridge ros2api_bridge.launch.py"
+
