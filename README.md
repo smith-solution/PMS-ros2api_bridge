@@ -49,12 +49,14 @@ docker compose up --build
 # Initial pose 설정
 curl -X POST "http://localhost:8000/initialpose" \
   -H "Content-Type: application/json" \
-  -d '{"x": 10.5, "y": -2.3, "yaw": 1.57, "frame_id": "map"}'
+  -d '{"x": -33.086097717285156, "y": 28.541202545166016, "yaw": 1.5708, "frame_id": "map"}'
+
 
 # Goal 설정  
 curl -X POST "http://localhost:8000/goal" \
   -H "Content-Type: application/json" \
-  -d '{"x": 20.0, "y": 15.2, "yaw": 0.0}'
+  -d '{"x": -33.186100006103516, "y": 36.441200256347656, "yaw": 1.482, "frame_id": "map"}'
+
 
 # Autonomous mode로 변경
 curl -X POST "http://localhost:8000/operation_mode" \
