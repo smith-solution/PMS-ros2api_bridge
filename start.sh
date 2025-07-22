@@ -16,4 +16,4 @@ export LD_LIBRARY_PATH=/opt/ros/humble/lib:$LD_LIBRARY_PATH
 
 # 4. Uvicorn 실행
 echo "🚀 Launching FastAPI server..."
-python3 -m uvicorn ros2api_bridge.ros2api_bridge.main:app --host 0.0.0.0 --port 8000
+python3 -m uvicorn ros2api_bridge.ros2api_bridge.main:app --host 0.0.0.0 --port 8001
