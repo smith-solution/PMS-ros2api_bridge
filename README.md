@@ -11,12 +11,12 @@
   예시:  
   ```json
   {
-    "target": "initialpose",
-    "x": 3.4,
-    "y": 3.2,
-    "z": 1
+    "purpose": "initialpose",
+    "payload": {"x" : 2 , "y" : 3, "yaw" : 2.3}
   }
   ```
+
+<img width="716" height="509" alt="Screenshot from 2025-07-22 17-18-41" src="https://github.com/user-attachments/assets/d92da969-df50-4cdf-94cb-5afd876517d6" />
 
 - 🧠 FastAPI는 해당 메시지를 파싱하여, ROS2의 **Autoware custom message**로 변환
 
