@@ -23,11 +23,5 @@ services:
     volumes:  # ❌ voloume → ✅ volumes
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
 
-    command: >
-      bash -c "
-               source /opt/ros/humble/setup.bash &&
-               source /PMS_server/install/setup.bash &&
-               apt update && apt install -y iproute2 &&
-               apt install -y ros-humble-rmw-cyclonedds-cpp &&
-               ros2 launch ros2api_bridge ros2api_bridge.launch.py"
+    command: /start.sh
 

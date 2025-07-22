@@ -16,7 +16,7 @@ setup(
         ('share/' + package_name + '/launch', glob.glob(os.path.join('launch', '*.launch.py'))),
         ('share/' + package_name + '/param', glob.glob(os.path.join('param', '*.yaml')))
     ],
-    install_requires=['setuptools','fastapi','uvicorn'],
+    install_requires=['setuptools','fastapi','uvicorn','rclpy',],
     zip_safe=True,
     maintainer='ddokkon',
     maintainer_email='pddj21@knu.ac.kr',

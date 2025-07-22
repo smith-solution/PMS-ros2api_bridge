@@ -5,15 +5,20 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y \
     python3-colcon-common-extensions \
     python3-pip \
+    ros-humble-rmw-cyclonedds-cpp \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 WORKDIR /PMS_server
-
 COPY ./src ./src
 
+# FastAPI + ROS 실행 스크립트 복사
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+#ROS2 package build
 RUN . /opt/ros/humble/setup.sh && colcon build --symlink-install
 
 SHELL ["/bin/bash", "-c"]
