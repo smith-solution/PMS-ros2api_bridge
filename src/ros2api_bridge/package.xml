@@ -9,7 +9,10 @@
 
   <depend>rclpy</depend>
   <depend>std_msgs</depend>
-  <!-- TODO : autoware msgs dependency add-->
+
+  <exec_depend>tier4_system_msgs</exec_depend>
+  <exec_depend>autoware_common_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

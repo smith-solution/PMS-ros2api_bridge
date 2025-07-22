@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y \
     python3-colcon-common-extensions \
     python3-pip \
+    python3-vcstool \
     ros-humble-rmw-cyclonedds-cpp \
     && rm -rf /var/lib/apt/lists/*
 
@@ -14,17 +15,27 @@ RUN pip install -r requirements.txt
 WORKDIR /PMS_server
 COPY ./src ./src
 
+# Autoware 메시지 의존성 clone
+COPY autoware_msgs_dependencies.repos .
+RUN vcs import src < autoware_msgs_dependencies.repos
+
+# rosdep 설치
+RUN apt update && rosdep update && \
+    rosdep install --from-paths src --ignore-src -r -y
+
 # FastAPI + ROS 실행 스크립트 복사
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-#ROS2 package build
-RUN . /opt/ros/humble/setup.sh && colcon build --symlink-install
+# ROS2 패키지 빌드 (너의 패키지 포함)
+RUN . /opt/ros/humble/setup.sh && \
+    colcon build --symlink-install \
+    --packages-select \
+        autoware_common_msgs \
+        tier4_system_msgs \
+        ros2api_bridge
 
+# 개발자 편의용 환경 설정
 SHELL ["/bin/bash", "-c"]
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo "source /PMS_server/install/setup.bash" >> ~/.bashrc
-# 1. docker compose 파일에서도 source 직접 하기 때문에 bashrc에 굳이 넣을필요없음.
-# 2. 단 위 두줄이 의미있는 경우는, 개발자가 직접 docker exec -it <컨테이너ID> bash 로 접속했을때,
-# -  bashrc에 두 줄 들어가고, docker exec에서 source ~/.bashrc 를 자동으로 해줌.
-
