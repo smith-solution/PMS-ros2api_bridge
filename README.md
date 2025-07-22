@@ -54,15 +54,13 @@ curl -X POST http://localhost:8000/send_message -H "Content-Type: application/js
 #호스트에서 fastapi에 요청 들어올땜다ㅏ 실시간으로 발사되는 토픽 확인
 ros2 topic echo /bridge_topic
 ---
+```
 
 ## 👥 3️⃣ Contributors
 
 | 👤 이름 | 🛠️ 역할       |
 |--------|------------|
 | 이석권 | Developer |
-
-
-
 
 
 
