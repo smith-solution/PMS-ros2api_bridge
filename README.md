@@ -47,19 +47,19 @@ docker compose up --build
 ```bash
 # Fastapi 엔드포인트에 테스트용 json 전송, 실제로는 node.js가 이 역할을 대신함
 # Initial pose 설정
-curl -X POST "http://localhost:8000/initialpose" \
+curl -X POST "http://localhost:8001/initialpose" \
   -H "Content-Type: application/json" \
   -d '{"x": -33.086097717285156, "y": 28.541202545166016, "yaw": 1.5708, "frame_id": "map"}'
 
 
 # Goal 설정  
-curl -X POST "http://localhost:8000/goal" \
+curl -X POST "http://localhost:8001/goal" \
   -H "Content-Type: application/json" \
   -d '{"x": -33.186100006103516, "y": 36.441200256347656, "yaw": 1.482, "frame_id": "map"}'
 
 
 # Autonomous mode로 변경
-curl -X POST "http://localhost:8000/operation_mode" \
+curl -X POST "http://localhost:8001/operation_mode" \
   -H "Content-Type: application/json" \
   -d '{"mode": 2}'
 
